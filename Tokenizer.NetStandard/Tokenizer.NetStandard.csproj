@@ -1,0 +1,76 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackOnBuild>true</PackOnBuild>
+    <PackageId>TokenizerNetStandard</PackageId>
+    <PackageVersion>0.1</PackageVersion>
+    <Authors>superplex</Authors>
+    <Owners>superplex</Owners>
+    <PackageProjectUrl>https://github.com/superplex/tokenizer</PackageProjectUrl>
+    <Description>Fork of flipbit/tokenizer build for .Net Standard.  </Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Tokenizer\Function.cs">
+      <Link>Function.cs</Link>
+    </Compile>
+    <Compile Include="..\Tokenizer\FunctionParser.cs">
+      <Link>FunctionParser.cs</Link>
+    </Compile>
+    <Compile Include="..\Tokenizer\StringExtensions.cs">
+      <Link>StringExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Tokenizer\Token.cs">
+      <Link>Token.cs</Link>
+    </Compile>
+    <Compile Include="..\Tokenizer\Tokenizer.cs">
+      <Link>Tokenizer.cs</Link>
+    </Compile>
+    <Compile Include="..\Tokenizer\TokenizerOptions.cs">
+      <Link>TokenizerOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Tokenizer\TokenOperatorFactory.cs">
+      <Link>TokenOperatorFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\Tokenizer\TokenReplacement.cs">
+      <Link>TokenReplacement.cs</Link>
+    </Compile>
+    <Compile Include="..\Tokenizer\TokenResult.cs">
+      <Link>TokenResult.cs</Link>
+    </Compile>
+    <Compile Include="..\Tokenizer\Exceptions\TokenizerException.cs">
+      <Link>Exceptions\TokenizerException.cs</Link>
+    </Compile>
+    <Compile Include="..\Tokenizer\Exceptions\ValidationException.cs">
+      <Link>Exceptions\ValidationException.cs</Link>
+    </Compile>
+    <Compile Include="..\Tokenizer\Operators\ITokenOperator.cs">
+      <Link>Operators\ITokenOperator.cs</Link>
+    </Compile>
+    <Compile Include="..\Tokenizer\Operators\ToDateTimeOperator.cs">
+      <Link>Operators\ToDateTimeOperator.cs</Link>
+    </Compile>
+    <Compile Include="..\Tokenizer\Operators\ToLowerOperator.cs">
+      <Link>Operators\ToLowerOperator.cs</Link>
+    </Compile>
+    <Compile Include="..\Tokenizer\Operators\ToUpperOperator.cs">
+      <Link>Operators\ToUpperOperator.cs</Link>
+    </Compile>
+    <Compile Include="..\Tokenizer\Validators\ITokenValidator.cs">
+      <Link>Validators\ITokenValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\Tokenizer\Validators\IsNumericValidator.cs">
+      <Link>Validators\IsNumericValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\Tokenizer\Validators\MaxLengthValidator.cs">
+      <Link>Validators\MaxLengthValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\Tokenizer\Validators\MinLengthValidator.cs">
+      <Link>Validators\MinLengthValidator.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="NuGet.Build.Packaging" Version="0.2.0" />
+  </ItemGroup>
+</Project>
