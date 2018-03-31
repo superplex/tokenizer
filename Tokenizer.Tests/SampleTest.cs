@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
+using System.Reflection;
 using NUnit.Framework;
 using Tokens.Samples.Classes;
 
@@ -20,8 +20,11 @@ namespace Tokens
         [Test]
         public void TestParseUkWhoisData()
         {
-            var pattern = File.ReadAllText("..\\..\\Samples\\Patterns\\nominet.txt");
-            var input = File.ReadAllText("..\\..\\Samples\\Data\\bbc.co.uk.txt");
+            var patternPath = GetFullPath("Samples/Patterns/nominet.txt");
+            var inputPath = GetFullPath("Samples/Data/bbc.co.uk.txt");
+
+            var pattern = File.ReadAllText(patternPath);
+            var input = File.ReadAllText(inputPath);
 
             var result = tokenizer.Parse<WhoisRecord>(pattern, input);
 
@@ -45,8 +48,8 @@ namespace Tokens
         [Test]
         public void TestParseIanaServerDataData()
         {
-            var pattern = File.ReadAllText("..\\..\\Samples\\Patterns\\iana.txt");
-            var input = File.ReadAllText("..\\..\\Samples\\Data\\com.txt");
+            var pattern = File.ReadAllText(GetFullPath("Samples/Patterns/Iana.txt"));
+            var input = File.ReadAllText(GetFullPath("Samples/Data/com.txt"));
 
             tokenizer.Options.ThrowExceptionOnMissingProperty = true;
 
@@ -95,6 +98,15 @@ namespace Tokens
             Assert.AreEqual("Registration information: http://www.verisign-grs.com", result.Value.Remarks);
             Assert.AreEqual(new DateTime(1985, 1, 1), result.Value.Created);
             Assert.AreEqual(new DateTime(2012, 2, 15), result.Value.Changed);
+        }
+
+        private string GetFullPath(string path)
+        {
+            var codeBaseUrl = new Uri(Assembly.GetExecutingAssembly().CodeBase);
+            var codeBasePath = Uri.UnescapeDataString(codeBaseUrl.AbsolutePath);
+            var dirPath = Path.GetDirectoryName(codeBasePath);
+
+            return Path.Combine(dirPath, path);
         }
     }
 }
